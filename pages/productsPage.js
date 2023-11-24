@@ -36,6 +36,21 @@ module.exports={
     },
     verifyText(expectedResult,elementName){
         I.seeTextEquals(expectedResult, this.loginFields.element(elementName));
+    },
+    clickOnAddtoCart(){
+        I.waitForElement(this.productFields.shopping_cart_link, 3);
+        I.seeElement(this.productFields.shopping_cart_link)
+        I.click(this.productFields.shopping_cart_link);
+    },
+    clickMenu(){
+        I.waitForElement(this.logoutFields.menuBtn, 3);
+        I.seeElement(this.logoutFields.menuBtn)
+        I.click(this.logoutFields.menuBtn);
+    },
+    clickLogout(){
+        I.waitForElement(this.logoutFields.logout_sidebar_link, 3);
+        I.seeElement(this.logoutFields.logout_sidebar_link)
+        I.click(this.logoutFields.logout_sidebar_link);
     }
 
 };
