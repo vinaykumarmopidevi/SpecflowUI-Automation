@@ -1,11 +1,20 @@
 # SpecflowUI-Automation
 
-
+installing `codeceptjs playwright` 
 ```sh
 npm init -y
 npm install codeceptjs playwright --save-dev
-npx codeceptjs init
 ```
+
+
+Let's initialize a new project for that!
+
+```sh
+npx codeceptjs init
+npx codeceptjs run
+```
+
+
 ```sh
 npx codeceptjs gherkin:init
 ```
