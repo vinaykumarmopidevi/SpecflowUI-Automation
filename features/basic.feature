@@ -6,9 +6,16 @@ Feature: Business rules
   Background:
     Given launch the application
     
+  @scenario  
   Scenario: purchase items
-     When enter username "standard_user" and password "secret_sauce" and click login button
+     Then I enter the "username" field name and "standard_user" value
+     Then I enter the "password" field name and "secret_sauce" value
+     Then I click the login "login-button" button
      Then add items to cart
+          | name |
+          | backpack |
+          | bike-light |
+          | bolt-t-shirt |
      Then click on add to cart
      Then click on checkout
      Then enter checkout information "vinay" firstname and "kumar" lastname and "500049" postalCode
@@ -16,12 +23,12 @@ Feature: Business rules
      Then goto home page
      Then logout from application
 
-
-   Scenario Outline: verify error message when login credentials are invalid
-      When I enter the "<username>" username
-      Then I enter the "<password>" password
-      Then I click the login button
-      Then Verify the expected "<result>" result
+   @tablescenario
+   Scenario Outline: verify error message when login with invalid credentials 
+      Then I enter the "username" field name and "<username>" value
+      Then I enter the "password" field name and "<password>" value
+      Then I click the login "login-button" button
+      Then Verify the expected "<result>" result and "error" element name
     Examples:
       | username | password     | result |
       | locked_out_user  | secret_sauce | Epic sadface: Sorry, this user has been locked out.|

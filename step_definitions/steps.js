@@ -1,44 +1,45 @@
 const { I } = inject();
-// Add in your custom step files
+const { productsPage } = inject();
+const { DataTableArgument } = require('codeceptjs');
 
 Given(/^launch the application$/, () => {
   I.amOnPage("/")
 });
 
-When(/^I enter the "([^"]*)" username$/, (username) => {
+Then(/^I enter the "([^"]*)" field name and "([^"]*)" value$/, (elementName,data) => {
+  productsPage.inputFiled(elementName,data)
+  
+});
+
+Then(/^I click the login "([^"]*)" button$/, (buttonName) => {
+  productsPage.buttonFiled(buttonName)
+});
+
+Then(/^Verify the expected "([^"]*)" result and "([^"]*)" element name$/, (result,elementName) => {
+  productsPage.verifyText(result,elementName);
+});
+
+Then(/^enter username "([^"]*)" and password "([^"]*)" and click login button$/, (username,password) => {
   I.seeElement('[data-test="login-button"]')
   I.fillField('[data-test="username"]', username);
-});
-
-Then(/^I enter the "([^"]*)" password$/, (password) => {
-  I.seeElement('[data-test="login-button"]')
   I.fillField('[data-test="password"]', password);
-});
-
-Then(/^I click the login button$/, () => {
-  I.seeElement('[data-test="login-button"]')
   I.click('[data-test="login-button"]');
 });
 
-Then(/^Verify the expected "([^"]*)" result$/, (result) => {
-  I.seeElement('[data-test="error"]')
-  I.seeTextEquals(result, '[data-test="error"]');
+
+Then(/^add items to cart$/,(table)=>{
  
-});
+  for (const id in table.rows) {
+    if (id < 1) {
+      continue; // skip a header of a table
+    }
+    const cells = table.rows[id].cells;
+    productsPage.linkFiled(cells[0].value);
+  }
+ 
+    
+  
 
-When(/^enter username "([^"]*)" and password "([^"]*)" and click login button$/, (username,password) => {
-  I.seeElement('[data-test="login-button"]')
-  I.fillField('[data-test="username"]', username);
-  I.fillField('[data-test="password"]', password);
-  I.click('[data-test="login-button"]');
-});
-
-
-Then(/^add items to cart$/,()=>{
- //add items to cart
- I.click('[data-test="add-to-cart-sauce-labs-backpack"]');
- I.click('[data-test="add-to-cart-sauce-labs-bike-light"]');
- I.click('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]');
 });
 
 Then(/^click on add to cart$/,()=>{

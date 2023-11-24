@@ -1,3 +1,5 @@
+
+
 exports.config = {
   output: './output',
   helpers: {
@@ -8,7 +10,8 @@ exports.config = {
     }
   },
   include: {
-    I: './steps_file.js'
+    I: './steps_file.js',
+    productsPage: './pages/productsPage.js',
   },
   mocha: {
     reporterOptions: {
