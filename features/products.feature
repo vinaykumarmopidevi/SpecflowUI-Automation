@@ -28,7 +28,7 @@ Feature: Business rules
    Scenario Outline: verify error message when login with invalid credentials 
       Then I enter the "username" field name and "<username>" value
       Then I enter the "password" field name and "<password>" value
-      Then I click the login "login-button" button
+      Then I click the "login-button" button
       Then Verify the expected "<result>" result and "error" element name
     Examples:
       | username | password     | result |
