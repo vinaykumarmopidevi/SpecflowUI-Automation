@@ -21,7 +21,10 @@ npx codeceptjs gherkin:init
 
 ```sh 
 npm install @codeceptjs/allure-legacy --save-dev
-npx codeceptjs run --plugins allure
+
+```
+```sh 
+ npx codeceptjs run --grep '@tablescenario'
 ```
 
 
