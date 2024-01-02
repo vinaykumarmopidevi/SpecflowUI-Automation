@@ -27,7 +27,9 @@ npm install @codeceptjs/allure-legacy --save-dev
  npx codeceptjs run --grep '@tablescenario'
 ```
 
-
+```sh 
+ npm install -g allure-commandline --save-dev
+```
 ```js
 allure: {
       enabled: true,
